@@ -7,6 +7,6 @@ class MoviesController < ApplicationController
 
     def show
         movie = Movie.find_by(id: params[:id])
-        render json: movie, include: [:genres]
+        render json: movie, include: [:genre]
     end
 end
