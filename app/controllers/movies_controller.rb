@@ -13,7 +13,8 @@ class MoviesController < ApplicationController
     def create
         movie = Movie.find_by(title: params[:title])
         if !movie
-            movie = Movie.create(title: params[:title], synopsis: params[:synopsis], poster_url: params[:poster_url])
+            genre = Genre.find_or_create_by(name: params[:genre])
+            movie = Movie.create(title: params[:title], synopsis: params[:synopsis], poster_url: params[:poster_url], genre_id: genre.id)
         end
         redirect_to movies_path
     end
