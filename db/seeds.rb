@@ -30,6 +30,8 @@ Genre.create(name: "Western")
 Genre.create(name: 'Mystery')
 #12
 Genre.create(name: "Thriller")
+#13
+Genre.create(name: "Animation")
 
 Movie.create(title: "Star Wars: A New Hope", 
     synopsis: "Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire's world-destroying battle station, while also attempting to rescue Princess Leia from the mysterious Darth Vader.",
