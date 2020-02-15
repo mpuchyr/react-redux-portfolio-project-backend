@@ -14,7 +14,7 @@ class MoviesController < ApplicationController
         movie = Movie.find_by(title: params[:title])
         if !movie
             if params[:poster_url] == ""
-                poster = "https://i.pinimg.com/originals/9e/4b/97/9e4b97433364d774a2a4a9c6290e8906.jpg"
+                poster = "https://s.studiobinder.com/wp-content/uploads/2017/12/Movie-Poster-Template-Dark-with-Image.jpg?x81279"
             else 
                 poster = params[:poster_url]
             end
