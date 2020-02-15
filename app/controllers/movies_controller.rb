@@ -11,15 +11,17 @@ class MoviesController < ApplicationController
     end
 
     def create
-        movie = Movie.find_by(title: params[:title])
+        movie = Movie.find_by(title: movie_params[:title])
         if !movie
-            if params[:poster_url] == ""
+            if movie_params[:poster_url] == ""
                 poster = "https://s.studiobinder.com/wp-content/uploads/2017/12/Movie-Poster-Template-Dark-with-Image.jpg?x81279"
             else 
-                poster = params[:poster_url]
+                poster = movie_params[:poster_url]
             end
-            genre = Genre.find_or_create_by(name: params[:genre])
-            movie = Movie.create(title: params[:title], synopsis: params[:synopsis], poster_url: poster, genre_id: genre.id)
+            genre = Genre.find_or_create_by(name: movie_params[:genre])
+            title = movie_params[:title]
+            synopsis = movie_params[:synopsis]
+            movie = Movie.create(title: title, synopsis: synopsis, poster_url: poster, genre_id: genre.id)
         end
         redirect_to movies_path
     end
@@ -32,6 +34,6 @@ class MoviesController < ApplicationController
 
     private
     def movie_params
-        params.require(:movie).permit(:title, :synopsis, :poster_url, genre_attributes: [:name])
+        params.require(:movie).permit(:title, :synopsis, :poster_url, :genre)
     end
 end
