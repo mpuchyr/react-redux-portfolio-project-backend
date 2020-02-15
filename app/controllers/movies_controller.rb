@@ -29,4 +29,9 @@ class MoviesController < ApplicationController
         movie.destroy
         redirect_to movies_path
     end
+
+    private
+    def movie_params
+        params.require(:movie).permit(:title, :synopsis, :poster_url, genre_attributes: [:name])
+    end
 end
