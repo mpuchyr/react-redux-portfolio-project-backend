@@ -26,6 +26,16 @@ class MoviesController < ApplicationController
         redirect_to movies_path
     end
 
+    def update
+        movie = Movie.find_by(id: movie_params[:id])
+        if movie.update(movie_params)
+            movie.save
+            redirect_to movie_path(movie)
+        else
+            redirect_to movies_path
+        end
+    end
+
     def destroy
         movie = Movie.find_by(id: params[:id])
         movie.destroy
@@ -34,6 +44,6 @@ class MoviesController < ApplicationController
 
     private
     def movie_params
-        params.require(:movie).permit(:title, :synopsis, :poster_url, :genre)
+        params.require(:movie).permit(:title, :synopsis, :poster_url, :genre, :id)
     end
 end
