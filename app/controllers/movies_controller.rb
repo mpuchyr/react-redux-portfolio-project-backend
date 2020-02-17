@@ -27,6 +27,7 @@ class MoviesController < ApplicationController
     end
 
     def update
+        
         movie = Movie.find_by(id: movie_params[:id])
         if movie.update(movie_params)
             movie.save
@@ -44,6 +45,6 @@ class MoviesController < ApplicationController
 
     private
     def movie_params
-        params.require(:movie).permit(:title, :synopsis, :poster_url, :genre, :id)
+        params.require(:movie).permit(:title, :synopsis, :poster_url, :genre, :id, :genre_id)
     end
 end
